@@ -2,9 +2,9 @@
 
 import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { use, useState } from "react";
 
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 interface UserDataType {
   email: string;
   password: string;
@@ -14,11 +14,13 @@ export default function login() {
     email: "",
     password: "",
   });
+  const router = useRouter()
   const loginHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/auth/login", userData);
       console.log(">>>>>>>>>>>res", response);
+      router.push('/home')
     } catch (error) {
       console.log(">>>>>>>>>>>", error);
     }

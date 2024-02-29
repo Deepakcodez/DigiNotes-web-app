@@ -1,8 +1,17 @@
+import Image from "next/image"
+
 export default function Welcome(){
 
     return(
         <>
-        <h1>welcome</h1>
+        <div>
+            <Image
+            src='/welcomeimg.jpg'
+            width={1600}
+            height={100}
+            alt="image"
+            ></Image>
+        </div>
         </>
     )
 }

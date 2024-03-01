@@ -6,7 +6,17 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const isPublicPath = path === '/auth/login' || path === '/auth/signup';
     const token = request.cookies.get("token")?.value || "";
+    
 
+
+
+    if (path === '/' && token) {
+        return NextResponse.redirect(new URL('/home', request.nextUrl.origin).toString());
+    }
+
+    if(path === '/' && !token){
+        return NextResponse.redirect(new URL('/welcome', request.nextUrl.origin).toString());
+    }
     if (isPublicPath && token) {
         return NextResponse.redirect(new URL('/home', request.nextUrl.origin).toString());
     }

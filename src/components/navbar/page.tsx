@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <>
      <div className="bg-gray-100 absolute h-[3rem] w-full flex gap-4 py-2 px-3 justify-between">
-      <div className="text-lg font-bold">Home </div>
+      <div className="text-lg font-bold">Logo</div>
       <div className="flex justify-center px-3 gap-3 ">
       <Button onClick={logoutHandler}>Logout</Button>
       <div className="bg-white h-10 w-10 rounded-full shadow-md flex justify-between items-center text-center  ">

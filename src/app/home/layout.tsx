@@ -1,5 +1,4 @@
 import Navbar from "@/components/navbar/page";
-import Sidebar from "@/components/sidebar/page";
 
 function layout({
     children,
@@ -8,14 +7,13 @@ function layout({
   }>) {
     return (  
           <>
-          <div className="flex
-          ">
-          <Sidebar/>
-          <div className=" relative w-full  ">
+        
+          
+          <div className=" relative w-full h-screen   ">
           <Navbar/>
            {children}
           </div>
-          </div>
+          
           </>
     );
 }

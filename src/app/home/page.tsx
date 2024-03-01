@@ -8,9 +8,16 @@ export default function Home() {
   
   return (
     <>
-    <div className="pt-[3rem] bg-gray-100 h-full">
+    <div className="pt-[3rem] bg-gray-100  h-full ">
 
-      <h1>Home</h1>
+      <h1 className="text-5xl mt-[4rem] py-3 ml-[2.5rem]">Boards</h1>
+      <div className="w-full flex justify-center">
+
+      <div className="  h-[70vh] md:h-[55vh]  flex  w-[95%] rounded-2xl  bg-gray-200">
+        <div className="">creater</div>
+        <div>child </div>
+      </div>
+      </div>
      
     </div>
     </>

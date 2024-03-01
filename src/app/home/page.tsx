@@ -5,19 +5,14 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
-  const logoutHandler = async () => {
-    try {
-      const response = await axios.get("/api/auth/logout");
-      console.log(">>>>>>>>>>>", response);
-      router.push('/auth/login')
-    } catch (error) {
-      console.log(">>>>>>>>>>>", error);
-    }
-  };
+  
   return (
     <>
+    <div className="pt-[3rem] bg-gray-100 h-full">
+
       <h1>Home</h1>
-      <Button onClick={logoutHandler}>Logout</Button>
+     
+    </div>
     </>
   );
 }

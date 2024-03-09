@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { string } from "zod";
+
 
 const docSchema = new mongoose.Schema({
 
@@ -8,11 +8,15 @@ const docSchema = new mongoose.Schema({
         required : true
     },
     content : {
-        type : string,
+        type : String,
+    },
+    createdBy : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'User'
     }
     
 
-});
+},{timestamps:true});
 
 const Doc = mongoose.models.Doc || mongoose.model('Doc', docSchema);
 

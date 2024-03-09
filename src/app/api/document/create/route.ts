@@ -9,6 +9,17 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { subject } = reqBody;
 
+
+    if(!subject){
+        return NextResponse.json(
+            {
+              message: "subject not provided",
+              success: false,
+            },
+            { status: 400 }
+          );
+    }
+
     // Check if document already exists
     const doc = await Document.findOne({ subject });
 
@@ -39,6 +50,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error: any) {
+    console.log('>>>>>>>>>>>error aagya')
     return NextResponse.json(
       {
         error: error.message,

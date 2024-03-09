@@ -8,7 +8,7 @@
   import { HorizontalScrollCarousel } from "@/components/boardcard/boardscroll/page";
   import { number } from "zod";
   import CreateDocPage from "../_component/CreateDocPage";
-import { get } from "http";
+  import useSWR  from 'swr'
 
   export default function Home() {
     const router = useRouter();
@@ -29,8 +29,24 @@ import { get } from "http";
               console.log('>>>>>>>>>>>', error.message)
           }
         }
+       
         getUser()
     },[])
+   
+
+
+    const { data, error } = useSWR('/api/document/docs', async (url) => {
+      try {
+        const resp = await axios.get(url);
+        console.log('>>>>>>>>>>>', resp.data.payload);
+        return resp.data.payload;
+      } catch (error) {
+        console.log('>>>>>>>>>>>', error);
+        throw new Error('Failed to fetch data');
+      }
+    });
+
+
 
     useEffect(()=>{
       setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth  )
@@ -55,13 +71,11 @@ import { get } from "http";
             drag='x'
             dragConstraints={{right:0, left:-width}}
             className="  flex gap-3">
-              {
-                card.map((data, index)=>(
-                  <Fragment key={index}>
-                  <div className=" px-[7rem] rounded-md h-[20rem] md:h-full  bg-blue-300 cursor-grab">{data}</div>
-                  </Fragment>
-                ))
-              } 
+             {data && data.map((card, index) => (
+                <Fragment key={index}>
+                  <div className="px-[7rem] rounded-md h-[20rem] md:h-full bg-blue-300 cursor-grab">{card.subject}</div>
+                </Fragment>
+              ))}
       
               </motion.div>
             </motion.div>

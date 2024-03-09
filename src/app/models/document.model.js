@@ -9,6 +9,7 @@ const docSchema = new mongoose.Schema({
     },
     content: {
         type: String,
+        default : "doc",
     },
     createdBy: {
         type: String,

@@ -1,5 +1,6 @@
-import { connect } from "@/app/dbConfig/dbConfig"; // Adjust path as needed
-import Document from "@/app/models/document.model"; // Assuming you have a Document model
+import { connect } from "@/app/dbConfig/dbConfig"; 
+import { getUserFromToken } from "@/app/helpers/getUser";
+import Document from "@/app/models/document.model";
 import { NextRequest, NextResponse } from "next/server";
 
 connect();
@@ -7,8 +8,12 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    const { subject } = reqBody;
-
+    const { subject  } = reqBody;
+    // getting userId
+    const token = request.cookies.get('token')?.value || '';
+    console.log('>>>>>>>>>>>token is : ', token)
+    const userId = await getUserFromToken(token);
+    console.log('>>>>>>>>>>> userId', userId)
 
     if(!subject){
         return NextResponse.json(
@@ -34,8 +39,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Create a new document
-    const newDoc = new Document({
-      subject
+    const newDoc = new Document({ 
+      subject : subject ,
+      createdBy : userId
     });
 
     // Save the new document
@@ -50,7 +56,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error: any) {
-    console.log('>>>>>>>>>>>error aagya')
+    console.log('>>>>>>>>>>>error :', error.message)
     return NextResponse.json(
       {
         error: error.message,

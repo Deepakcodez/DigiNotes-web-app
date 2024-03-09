@@ -1,23 +1,22 @@
+
 import mongoose from "mongoose";
 
-
 const docSchema = new mongoose.Schema({
-
-    subject:{
-        type : String,
-        required : true
+    subject: {
+        type: String,
+        required: [true, 'Subject is required'],
+        minlength: [1, 'Enter name properly']
     },
-    content : {
-        type : String,
+    content: {
+        type: String,
     },
-    createdBy : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref : 'User'
+    createdBy: {
+        type: String,
+        required: true
     }
-    
+}, { timestamps: true });
 
-},{timestamps:true});
 
-const Doc = mongoose.models.Doc || mongoose.model('Doc', docSchema);
+const Document = mongoose.models.Document || mongoose.model('Document', docSchema);
 
-export default Doc;
+export default Document;

@@ -8,6 +8,7 @@
   import { HorizontalScrollCarousel } from "@/components/boardcard/boardscroll/page";
   import { number } from "zod";
   import CreateDocPage from "../_component/CreateDocPage";
+import { get } from "http";
 
   export default function Home() {
     const router = useRouter();
@@ -15,7 +16,21 @@
     const [width, setWidth] = useState(0)
     const [showCreateDoc,setShowCreateDoc] = useState<boolean>(false)
     const carousel = useRef()
+    const [userId, setUserId] = useState<string>("invalid user")
+    
+    useEffect(()=>{
+        const getUser=async()=>{
 
+          try {
+              const resp = await axios.get('/api/auth/me');
+              console.log('>>>>>>>>>>>', resp)
+              setUserId(resp.data.data._id)
+          } catch (error:any) {
+              console.log('>>>>>>>>>>>', error.message)
+          }
+        }
+        getUser()
+    },[])
 
     useEffect(()=>{
       setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth  )
@@ -25,7 +40,7 @@
     return (
       <>
         <div className="relative pt-[3rem] bg-gray-900  h-full px-2">
-        {showCreateDoc &&  <CreateDocPage cancelbtn={setShowCreateDoc} /> }
+        {showCreateDoc &&  <CreateDocPage cancelbtn={setShowCreateDoc} userId={userId} /> }
           <div className="text-5xl  text-white px-5 mt-5">Boards</div>
           {/* parent box */}
           <div className="bg-gray-20  mt-[3rem] md:mt-[0] rounded-md h-[70vh] md:h-[55vh] p-2 md:p-5 flex flex-col md:flex-row gap-2">

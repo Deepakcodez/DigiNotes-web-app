@@ -22,11 +22,11 @@ export default function Home() {
 
   return (
     <>
-      <div className="pt-[3rem] bg-gray-100  h-full px-2">
-        <div className="text-5xl font-semibold">Boards</div>
+      <div className="pt-[3rem] bg-gray-900  h-full px-2">
+        <div className="text-5xl  text-white px-5 mt-5">Boards</div>
         {/* parent box */}
-        <div className="bg-gray-300 rounded-md h-[70vh] md:h-[55vh] p-5 flex gap-2">
-          <div className="px-[5rem] rounded-lg h-full bg-blue-500 flex justify-center items-center"> <Plus color="white" size={40}/> </div>
+        <div className="bg-gray-20  mt-[3rem] md:mt-[0] rounded-md h-[70vh] md:h-[55vh] p-2 md:p-5 flex flex-col md:flex-row gap-2">
+          <div className="px-[5rem] rounded-lg h-[3rem] md:h-full bg-blue-500 flex justify-center items-center"> <Plus color="white" size={40}/> </div>
           {/* cards */}
           <motion.div ref={carousel}  className=" w-full flex flex-row gap-2 overflow-hidden">
           <motion.div
@@ -36,7 +36,7 @@ export default function Home() {
             {
               card.map((data, index)=>(
                 <Fragment key={index}>
-                 <div className=" px-[7rem] rounded-md h-full bg-blue-100 cursor-grab">{data}</div>
+                 <div className=" px-[7rem] rounded-md h-[20rem] md:h-full  bg-blue-300 cursor-grab">{data}</div>
                 </Fragment>
               ))
             } 

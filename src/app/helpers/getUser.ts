@@ -1,11 +1,9 @@
 import { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
-
-export const getUserFromToken = (request : NextRequest)=>{
+import jwt from 'jsonwebtoken'
+export const getUserFromToken =  (token: string): string =>{
      
     try {
 
-        const token = request.cookies.get('token')?.name || '' ;
         const decodedTOken:any = jwt.verify(token,  process.env.TOKEN_SECRET!);
         return decodedTOken.id
 

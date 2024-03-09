@@ -9,14 +9,13 @@ export function middleware(request: NextRequest) {
     
 
 
-
+    if(path === '/' && !token ){
+        return NextResponse.next();
+    }
     if (path === '/' && token) {
         return NextResponse.redirect(new URL('/home', request.nextUrl.origin).toString());
     }
 
-    if(path === '/' && !token){
-        return NextResponse.redirect(new URL('/welcome', request.nextUrl.origin).toString());
-    }
     if (isPublicPath && token) {
         return NextResponse.redirect(new URL('/home', request.nextUrl.origin).toString());
     }
@@ -26,7 +25,7 @@ export function middleware(request: NextRequest) {
     }
 }
 
-// See "Matching Paths" below to learn more
+
 export const config = {
   matcher: [
     '/auth/:path*',

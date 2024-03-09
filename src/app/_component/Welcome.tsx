@@ -4,7 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from '../../lib/welcomeUtils';
 
-const welcome = () => {
+const Welcome = () => {
   return (
     <div className="relative">
       <Canvas
@@ -61,4 +61,4 @@ const Point = ({ position, color }:any) => {
   );
 };
 
-export default welcome;
+export default Welcome;

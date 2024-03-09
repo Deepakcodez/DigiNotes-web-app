@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
+import { mutate } from "swr";
 
 
 interface CreateDocPageProps {
@@ -20,8 +21,10 @@ const CreateDocPage = ({ cancelbtn, userId }: CreateDocPageProps) => {
             {
                 subject
             });
+            mutate('/api/document/docs')
             console.log('Document created:', createdDoc);
             cancelbtn(false);
+
 
         } catch (error) {
 

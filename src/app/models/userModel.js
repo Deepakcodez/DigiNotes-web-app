@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     verifyToken : String,
     verifyTokenExpiry : Date,
 
-});
+},{timestamps : true});
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 

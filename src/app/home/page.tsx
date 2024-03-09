@@ -9,7 +9,7 @@
   import { number } from "zod";
   import CreateDocPage from "../_component/CreateDocPage";
   import useSWR  from 'swr'
-
+  import moment from 'moment'
   export default function Home() {
     const router = useRouter();
     const card = [1, 1, 1, 1, 1, 1, 1, 1];
@@ -81,11 +81,13 @@
                      stiffness: 150,
                      duration: .2,
                      delay: (index * 0.3) }}
-                  className=" w-[15rem]  rounded-md h-[20rem] md:h-full bg-blue-300 cursor-grab ">
+                    className=" w-[15rem] flex flex-col items-center justify-between p-5 rounded-md h-[20rem] md:h-full bg-blue-300  hover:bg-blue-400/75  cursor-grab ">
                    
-                    <h1 className="text-3xl">
+                    <h1 className="text-3xl text-center">
                     {card.subject}
                     </h1>
+                    <h1 className="font-bold text-5xl text-blue-950/25">DOCS</h1>
+                    <h1 className="text-xs self-end text-blue-900/75 ">{moment(card.createdAt).add(3, 'days').calendar() }</h1>
                     
                     </motion.div>
                 </Fragment>

@@ -73,7 +73,21 @@
             className="  flex gap-3">
              {data && data.map((card, index) => (
                 <Fragment key={index}>
-                  <div className="px-[7rem] rounded-md h-[20rem] md:h-full bg-blue-300 cursor-grab">{card.subject}</div>
+                  <motion.div
+                   initial={{ opacity: 0, x: -60 }}
+                   animate={{ opacity: 1, x: 0 }}
+                   transition={{
+                     type: "spring",
+                     stiffness: 150,
+                     duration: .2,
+                     delay: (index * 0.3) }}
+                  className=" w-[15rem]  rounded-md h-[20rem] md:h-full bg-blue-300 cursor-grab ">
+                   
+                    <h1 className="text-3xl">
+                    {card.subject}
+                    </h1>
+                    
+                    </motion.div>
                 </Fragment>
               ))}
       

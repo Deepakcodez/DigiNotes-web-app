@@ -10,7 +10,7 @@ interface UserDataType {
   email: string;
   password: string;
 }
-export default function login() {
+export default function SignUp() {
   const [userData, setUserData] = useState<UserDataType>({
     name: "",
     email: "",

@@ -2,14 +2,14 @@
 
 import axios from "axios";
 import Link from "next/link";
-import { use, useState } from "react";
+import React, {  useState } from "react";
 
 import { useRouter } from "next/navigation";
 interface UserDataType {
   email: string;
   password: string;
 }
-export default function login() {
+export default function Login() {
   const [userData, setUserData] = useState<UserDataType>({
     email: "",
     password: "",

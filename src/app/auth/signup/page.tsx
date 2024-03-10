@@ -3,8 +3,8 @@ import {motion} from 'framer-motion'
 const SignUp = () => {
   return ( 
     <>
+     
     <div className=" relative overflow-hidden h-screen w-full bg-gradient-to-r from-slate-900 to-blue-500 flex justify-center items-end">
-       
        {/* laptop */}
        <motion.div
        initial = {{ y:250 }}

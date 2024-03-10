@@ -107,7 +107,7 @@ export default function Login() {
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
-                    haven't any account?
+                    have not any account?
                     <Link
                       href="/auth/signup"
                       className="text-gray-700 underline"
